@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Root Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Square & Cube Root Calculator</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <br>
+    <button onclick="calculateRoots()">Calculate</button>
+
+    <div class="output" id="outputArea"></div>
+  </div>
+
+  <script>
+    function calculateRoots() {
+      const num = parseFloat(document.getElementById("numberInput").value);
+      const output = document.getElementById("outputArea");
+
+      if (isNaN(num)) {
+        output.innerHTML = "❌ Please enter a valid number!";
+        return;
+      }
+
+      const squareRoot = Math.sqrt(num).toFixed(4);
+      const cubeRoot = Math.cbrt(num).toFixed(4);
+
+      output.innerHTML = `
+        ✅ Square Root of ${num} = ${squareRoot}<br>
+        ✅ Cube Root of ${num} = ${cubeRoot}
+      `;
+    }
+  </script>
+
+</body>
+</html>
